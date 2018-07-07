@@ -20,6 +20,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions("full")
+    productFlavors {
+        simpsons {
+            applicationId "com.xfinity.simpsonsviewer"
+            buildConfigField("String", "api_url", "http://api.duckduckgo.com/?q=simpsons+characters&format=json")
+        }
+        wire {
+            applicationId "com.xfinity.wireviewer"
+            buildConfigField("String", "api_url", "http://api.duckduckgo.com/?q=the+wire+characters&format=json")
+        }
+    }
 }
 
 dependencies {
