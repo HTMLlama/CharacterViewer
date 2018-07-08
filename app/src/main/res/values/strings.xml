@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Character Viewer</string>
+
+    <string name="name_default">Name Missing</string>
+    <string name="description_default">Description Missing</string>
+
+    <string name="iv_main_character_content_description">Character image</string>
+    <string name="action_bar_view_swap">View Swap</string>
+
+    <string name="extra_name">extra_name</string>
+    <string name="extra_desc">extra_desc</string>
+    <string name="extra_image_url">extra_image_url</string>
 </resources>
