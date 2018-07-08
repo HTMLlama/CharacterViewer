@@ -10,26 +10,21 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val GRID_SPAN = 3
-    private val characters = ArrayList<VideoCharacter>()
+    private var characters = ArrayList<VideoCharacter>()
 
     private var isMultiGridLayout = false
+
+    private val postCharacters = fun (jsonString: String) {
+        characters = CharacterBuilder.buildCharacters(jsonString)
+        runOnUiThread { buildRecyclerView() }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.view_swap_toolbar))
 
-        // ToDo:: Remove debugging list
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-        characters.add(VideoCharacter())
-
-        buildRecyclerView()
+        CharacterBuilder.callCharacterApi(this, postCharacters)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
