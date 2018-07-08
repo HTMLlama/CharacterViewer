@@ -6,4 +6,8 @@
 
     <string name="iv_main_character_content_description">Character image</string>
     <string name="action_bar_view_swap">View Swap</string>
+
+    <string name="extra_name">extra_name</string>
+    <string name="extra_desc">extra_desc</string>
+    <string name="extra_image_url">extra_image_url</string>
 </resources>

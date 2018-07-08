@@ -1,13 +1,13 @@
 package com.xfinity.characterviewer
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 
 internal class RVAdapterList(private val context: Context, private val characters: ArrayList<VideoCharacter>):
@@ -24,7 +24,11 @@ internal class RVAdapterList(private val context: Context, private val character
         }
 
         private fun viewClicked(context: Context, characters: ArrayList<VideoCharacter>) {
-            Toast.makeText(context, "Clicked the List view", Toast.LENGTH_LONG).show()
+            val intent = Intent(context, CharacterViewActivity::class.java)
+            intent.putExtra(context.getString(R.string.extra_name), characters[index].name)
+            intent.putExtra(context.getString(R.string.extra_desc), characters[index].description)
+            intent.putExtra(context.getString(R.string.extra_image_url), characters[index].imageUrl)
+            context.startActivity(intent)
         }
     }
 
@@ -33,7 +37,9 @@ internal class RVAdapterList(private val context: Context, private val character
         holder.index = position
         holder.tvName.text = character.name
         holder.tvMain.text = character.description
-        Glide.with(context).load(character.imageUrl).into(holder.ivProfile)
+        if (character.imageUrl.isNotEmpty()) {
+            Glide.with(context).load(character.imageUrl).into(holder.ivProfile)
+        }
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder = RVAdapterList.ViewHolder(
